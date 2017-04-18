@@ -8,16 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>箴理</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="jPj1gSXmhl">
+  <meta name="description" content="这是我的心得集">
 <meta property="og:type" content="website">
 <meta property="og:title" content="箴理">
-<meta property="og:url" content="http://yoursite.com/baidu_verify_jPj1gSXmhl.html">
+<meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="箴理">
-<meta property="og:description" content="jPj1gSXmhl">
-<meta property="og:updated_time" content="2017-04-18T12:17:52.688Z">
+<meta property="og:description" content="这是我的心得集">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="箴理">
-<meta name="twitter:description" content="jPj1gSXmhl">
+<meta name="twitter:description" content="这是我的心得集">
   
     <link rel="alternative" href="/atom.xml" title="箴理" type="application/atom+xml">
   
@@ -157,40 +156,122 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            
+  
+    <article id="post-人民网解析池分析" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/17/人民网解析池分析/">人民网解析池简单分析</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/17/人民网解析池分析/" class="archive-article-date">
+  	<time datetime="2017-04-17T15:00:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-17</time>
+</a>
+        
+      </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        jPj1gSXmhl
+        <h5 id="导语："><a href="#导语：" class="headerlink" title="导语："></a>导语：</h5><blockquote>
+<p>人民网是世界十大报纸之一《人民日报》建设的以新闻为主的大型网上信息交互平台，也是国际互联网上最大的综合性网络媒体之一。而作为一个著名的门户网站，信息量丰富，信息类别多样，网站结构复杂，反爬虫策略严密等特点使得结构化爬取该网站变得异常困难，本篇文章则重点讨论人民网网站结构以及给出一种较为有效的爬取策略。</p>
+</blockquote>
+<h2 id="一，网站整体结构"><a href="#一，网站整体结构" class="headerlink" title="一，网站整体结构"></a>一，网站整体结构</h2><p>人民网的网站结构如下所示，该网站内部链接比较清晰，首页与频道页，专题页以及内容页之间都是互相链接的，所以这势必会造成很多的重复url，不过庆幸地是我们的框架可以很轻松地完成上亿条数据的去重，所以这就大大减轻了解析模块的负担。<br><img src="https://www.processon.com/chart_image/58f4ad26e4b02e95ec5052ee.png" alt=""></p>
+<h2 id="二，页面内部结构"><a href="#二，页面内部结构" class="headerlink" title="二，页面内部结构"></a>二，页面内部结构</h2><h4 id="首页结构"><a href="#首页结构" class="headerlink" title="首页结构"></a>首页结构</h4><p>经分析人民网首页结构整体如下，s代表多个标签<br><img src="https://www.processon.com/chart_image/58f4b2b8e4b0f563a7d8170d.png" alt=""></p>
+<p>body顶部有两个div标签广告以及一个section标签广告。之后则是十几个section，中间掺杂着若干个div标签的广告，底部则是分站与友情链接模块。<br>很明显首页的所有新闻相关类链接全存在与section标签中（除去第一个），如此我们则可以通过这个特点来提取我们想要的url，比如通过xpath(“//section[position()&gt;1 and position()&lt;12]//a/@href”)。</p>
+<p>获取url数据库展示：</p>
+<p><img src="http://wx4.sinaimg.cn/mw690/3d885b55ly1feqrkpa8fyj20mt0drq3i.jpg" alt=""></p>
+<h4 id="频道页结构"><a href="#频道页结构" class="headerlink" title="频道页结构"></a>频道页结构</h4><p>由于人民网频道种类的繁多，经验证发现频道间结构有较大差异，只有个别频道（如时政，财经等）结构大致相同，而大多频道差异性很大，这就造成了无法通过分析结构来写一个通用的频道页解析方法。还有一个较为尴尬的问题–有些新闻的url是相对路径。考虑到这些特殊性，所以最终决定通过暴力获取所有url，然后过滤掉不满足要求的url并为相对路径补充父亲节点。</p>
+<p>我们需要的url具有如下特点：</p>
+<ul>
+<li>字符串中包含n1–对应内容页</li>
+<li>字符串中包含GB–对应内专题页</li>
+<li>字符串中包含index–对应内频道页的翻页</li>
+<li>字符串以.people.com.cn结尾</li>
+</ul>
+<p>具体代码如下：</p>
+<pre><code>self.links.append(selector.xpath(
+    &apos;//a/@href&apos;
+))
+parent = url.split(&apos;/&apos;)[0]
+self.links = filter(lambda x: &apos;/n1&apos; not in x and &apos;/GB&apos; not in x and &apos;index&apos; not in x, self.links)
+for i in range(0, len(self.links)):
+    if self.links[i].startswith(&apos;/n1&apos;) or self.links[i].startswith(&apos;index&apos;):
+        self.links[i] = parent + &apos;/&apos; + self.links[i]
+</code></pre><h4 id="专题页结构"><a href="#专题页结构" class="headerlink" title="专题页结构"></a>专题页结构</h4><p>专题页面和频道页面差不多，甚至具有更大的差异性，所以我们采取和频道页面相同的处理方式。</p>
+<h4 id="内容页结构"><a href="#内容页结构" class="headerlink" title="内容页结构"></a>内容页结构</h4><p>内容页结构如下所示，标题都在class= text_title的div标签的h1标签下，而新闻正文则是在id=rwb_zw的div标签的p标签下。所以我们可以分别通过这两个xpath来获取相应的新闻标题和正文。</p>
+<p>即xpath(“//h1/text()”)–标题,xpath(“//*[@id=”rwb_zw”]/p/text()”)–正文<br><img src="https://www.processon.com/chart_image/58f4d2d9e4b02e95ec5246c9.png" alt=""></p>
+<p>数据库结果展示：</p>
+<p><img src="http://wx1.sinaimg.cn/mw690/3d885b55ly1feqrkox4l1j20m90dhdge.jpg" alt=""></p>
+
       
 
       
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://lzleejean.github.io/img/alpay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">python 爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/17/人民网解析池分析/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
+    <article id="post-文章题目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/27/文章题目/">文章题目</a>
+    </h1>
+  
+
+        
+        <a href="/2017/03/27/文章题目/" class="archive-article-date">
+  	<time datetime="2017-03-27T07:31:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        
+      
+
       
     </div>
     <div class="article-info article-info-index">
@@ -199,75 +280,85 @@
       
 
       
-
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/27/文章题目/">展开全文 >></a>
+        </p>
       
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
-        </div>
-      </div>
-    </span>
-  </div>
-</div>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/baidu_verify_jPj1gSXmhl.html" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+
+
+
+
+
+
+
+  
+    <article id="post-hello-world" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/26/hello-world/">Hello World</a>
+    </h1>
   
 
+        
+        <a href="/2017/03/26/hello-world/" class="archive-article-date">
+  	<time datetime="2017-03-26T15:33:19.347Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/03/26/hello-world/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
 
 
 
 
   
-    <div class="duoshuo"></div>
   
-
-
 
 
           </div>
@@ -289,7 +380,7 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: false,
+		isHome: true,
 		isPost: false,
 		isArchive: false,
 		isTag: false,
