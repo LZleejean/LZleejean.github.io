@@ -26,8 +26,10 @@
 人民网的网站结构如下所示，该网站内部链接比较清晰，首">
 <meta property="og:image" content="https://www.processon.com/chart_image/58f4ad26e4b02e95ec5052ee.png">
 <meta property="og:image" content="https://www.processon.com/chart_image/58f4b2b8e4b0f563a7d8170d.png">
+<meta property="og:image" content="http://a2.qpic.cn/psb?/V14gFyih05ucmO/1NNY1nZDiQU6DxCE9rCT.2UlhN24WcnEMQWe3eJ97os!/b/dCUAAAAAAAAA&bo=NQPvAQAAAAADAP0!&rf=viewer_4&t=5">
 <meta property="og:image" content="https://www.processon.com/chart_image/58f4d2d9e4b02e95ec5246c9.png">
-<meta property="og:updated_time" content="2017-04-17T15:01:50.014Z">
+<meta property="og:image" content="http://a1.qpic.cn/psb?/V14gFyih05ucmO/WcOf3MolXp.Il1fNM*WoW7A2HFcpifnFGQpfC*6y02k!/b/dG4BAAAAAAAA&bo=IQPlAQAAAAADAOM!&rf=viewer_4&t=5">
+<meta property="og:updated_time" content="2017-04-18T03:42:42.732Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="人民网解析池简单分析">
 <meta name="twitter:description" content="#####导语：
@@ -206,6 +208,8 @@
 <p>####首页结构</p>
 <p>经分析人民网首页结构整体如下，s代表多个标签<br><img src="https://www.processon.com/chart_image/58f4b2b8e4b0f563a7d8170d.png" alt=""></p>
 <p>body顶部有两个div标签广告以及一个section标签广告。之后则是十几个section，中间掺杂着若干个div标签的广告，底部则是分站与友情链接模块。<br>很明显首页的所有新闻相关类链接全存在与section标签中（除去第一个），如此我们则可以通过这个特点来提取我们想要的url，比如通过xpath(“//section[position()&gt;1 and position()&lt;12]//a/@href”)。</p>
+<p>获取url数据库展示：</p>
+<p><img src="http://a2.qpic.cn/psb?/V14gFyih05ucmO/1NNY1nZDiQU6DxCE9rCT.2UlhN24WcnEMQWe3eJ97os!/b/dCUAAAAAAAAA&amp;bo=NQPvAQAAAAADAP0!&amp;rf=viewer_4&amp;t=5" alt=""></p>
 <p>####频道页结构</p>
 <p>由于人民网频道种类的繁多，经验证发现频道间结构有较大差异，只有个别频道（如时政，财经等）结构大致相同，而大多频道差异性很大，这就造成了无法通过分析结构来写一个通用的频道页解析方法。还有一个较为尴尬的问题–有些新闻的url是相对路径。考虑到这些特殊性，所以最终决定通过暴力获取所有url，然后过滤掉不满足要求的url并为相对路径补充父亲节点。</p>
 <p>我们需要的url具有如下特点：</p>
@@ -229,6 +233,8 @@ for i in range(0, len(self.links)):
 <p>####内容页结构</p>
 <p>内容页结构如下所示，标题都在class= text_title的div标签的h1标签下，而新闻正文则是在id=rwb_zw的div标签的p标签下。所以我们可以分别通过这两个xpath来获取相应的新闻标题和正文。</p>
 <p>即xpath(“//h1/text()”)–标题,xpath(“//*[@id=”rwb_zw”]/p/text()”)–正文<br><img src="https://www.processon.com/chart_image/58f4d2d9e4b02e95ec5246c9.png" alt=""></p>
+<p>数据库结果展示：</p>
+<p><img src="http://a1.qpic.cn/psb?/V14gFyih05ucmO/WcOf3MolXp.Il1fNM*WoW7A2HFcpifnFGQpfC*6y02k!/b/dG4BAAAAAAAA&amp;bo=IQPlAQAAAAADAOM!&amp;rf=viewer_4&amp;t=5" alt=""></p>
 
       
 
