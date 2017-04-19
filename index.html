@@ -274,7 +274,7 @@ for i in range(0, len(self.links)):
 </blockquote>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查某个状态的相邻状态来得到从起始状态到目标状态的最小代价路径。实质上就是反复检查它已经看到的但是还没有搜索到的最有希望的位置。而当目标位置被探索到时，算法终止。</p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>通过维护两张表（OPEN，CLOSED）来标记地图上的未检查状态和已检查状态，对于某个结点，检查其相邻状态，然后选择最好的状态继续检查，直至检查到目标点。</p>
-<p>从上面这段描述来看，有没有感觉有点熟悉？dijktra算法。确实，有点像，不过看完下面这张图，你就知道和dj算法哪里不同了。<br><img src="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true" alt=""></p>
+<p>从上面这段描述来看，有没有感觉有点熟悉？dijktra算法。确实，有点像，不过看完下面这张图，你就知道和dj算法哪里不同了。<br><img src="https://lzleejean.github.io/img/AStar.pgif" alt=""></p>
 <ul>
 <li>A*算法维护着一个父状态以保证最终可以从终点通过父结点来回溯找到完整的路径；而dj算法只是求最短路径。</li>
 <li>A*算法使用场景比较广泛，可以直接运用至游戏世界中；而dj算法是相对抽象的图场景。</li>

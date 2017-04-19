@@ -20,16 +20,16 @@
 在玩游戏时，我们遇到过这样的场景：接到一个任务，需要前往某个坐标（例如npc，某个地区），此时我们点击任务列表中的坐标，我们的角色就会自动前往该目标，并且可以自动的规避一些障碍或者死胡同。那么这种AI路径规划技术就是A算法。本文将会简单介绍A算法的概念，并且给出一个最为简单的例子。
 
 概述A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查">
-<meta property="og:image" content="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true">
+<meta property="og:image" content="https://lzleejean.github.io/img/AStar.pgif">
 <meta property="og:image" content="http://wx3.sinaimg.cn/mw690/3d885b55ly1fesevt8b3wj20e70acmxs.jpg">
-<meta property="og:updated_time" content="2017-04-19T16:23:51.040Z">
+<meta property="og:updated_time" content="2017-04-19T16:32:54.978Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A*算法入门浅谈">
 <meta name="twitter:description" content="A*算法浅析
 在玩游戏时，我们遇到过这样的场景：接到一个任务，需要前往某个坐标（例如npc，某个地区），此时我们点击任务列表中的坐标，我们的角色就会自动前往该目标，并且可以自动的规避一些障碍或者死胡同。那么这种AI路径规划技术就是A算法。本文将会简单介绍A算法的概念，并且给出一个最为简单的例子。
 
 概述A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查">
-<meta name="twitter:image" content="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true">
+<meta name="twitter:image" content="https://lzleejean.github.io/img/AStar.pgif">
   
     <link rel="alternative" href="/atom.xml" title="箴理" type="application/atom+xml">
   
@@ -194,7 +194,7 @@
 </blockquote>
 <h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查某个状态的相邻状态来得到从起始状态到目标状态的最小代价路径。实质上就是反复检查它已经看到的但是还没有搜索到的最有希望的位置。而当目标位置被探索到时，算法终止。</p>
 <h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>通过维护两张表（OPEN，CLOSED）来标记地图上的未检查状态和已检查状态，对于某个结点，检查其相邻状态，然后选择最好的状态继续检查，直至检查到目标点。</p>
-<p>从上面这段描述来看，有没有感觉有点熟悉？dijktra算法。确实，有点像，不过看完下面这张图，你就知道和dj算法哪里不同了。<br><img src="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true" alt=""></p>
+<p>从上面这段描述来看，有没有感觉有点熟悉？dijktra算法。确实，有点像，不过看完下面这张图，你就知道和dj算法哪里不同了。<br><img src="https://lzleejean.github.io/img/AStar.pgif" alt=""></p>
 <ul>
 <li>A*算法维护着一个父状态以保证最终可以从终点通过父结点来回溯找到完整的路径；而dj算法只是求最短路径。</li>
 <li>A*算法使用场景比较广泛，可以直接运用至游戏世界中；而dj算法是相对抽象的图场景。</li>
