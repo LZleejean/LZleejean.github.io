@@ -22,7 +22,7 @@
 概述A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查">
 <meta property="og:image" content="https://lzleejean.github.io/img/AStar.gif">
 <meta property="og:image" content="http://wx3.sinaimg.cn/mw690/3d885b55ly1fesevt8b3wj20e70acmxs.jpg">
-<meta property="og:updated_time" content="2017-04-19T16:39:41.880Z">
+<meta property="og:updated_time" content="2017-04-19T16:44:36.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="A*算法入门浅谈">
 <meta name="twitter:description" content="A*算法浅析
@@ -231,7 +231,36 @@ AStarSearch(Location StartLoc, Location EndLoc)
             {
                 NewCost = Node.GetCostFromStart() + GetCost(Node,NewNode)
                 //已存在的就忽略
-                if (NewNode is in Closed or (NewNode is in Open and NewNode.CostFromStart <<= newcost))="" {="" continue;="" }="" else="" 在open表中则只更新数据="" if="" (newnode="" is="" in="" open)="" newnode.parent="Node" newnode.costfromstart="NewCost" newnode.costtogoal="PathCost(NewNode.Loc," endloc)="" newnode.totalcost="NewNode.CostFromStart+NewNode.CostToGoal" push="" new="" node="" to="" open 相邻状态遍历完毕="" closed="" return="" failure="" <="" pre="">
+                if (NewNode is in Closed or (NewNode is in Open and NewNode.CostFromStart 小于等于 NewCost))
+                {
+                    continue;
+                }
+                else
+                {
+                    //在open表中则只更新数据
+                    if (NewNode is in Open)
+                    {
+                        NewNode.Parent=Node
+                        NewNode.CostFromStart=NewCost
+                        NewNode.CostToGoal=PathCost(NewNode.Loc, EndLoc)
+                        NewNode.TotalCost=NewNode.CostFromStart+NewNode.CostToGoal
+                    }
+                    else
+                    {
+                        NewNode.Parent=Node
+                        NewNode.CostFromStart=NewCost
+                        NewNode.CostToGoal=PathCost(NewNode.Loc, EndLoc)
+                        NewNode.TotalCost=NewNode.CostFromStart+NewNode.CostToGoal
+                        push New Node to Open
+                    }                
+                }
+            }//相邻状态遍历完毕
+        }
+        push Node to Closed
+    }
+    return failure
+}
+</pre>
 
 
 <p>我用c++实现了一个最简单的形式，地图为方形栅格，无障碍物，取与目标点的欧几里得距离为启发式估价函数。设相邻状态对角的cost为14，直线的cost为10。</p>
@@ -240,7 +269,7 @@ AStarSearch(Location StartLoc, Location EndLoc)
 <p>程序源代码: <a href="https://github.com/LZleejean" target="_blank" rel="external">https://github.com/LZleejean</a></p>
 <p>这里给大家推荐一个写的特别好的A*算法的文章。<a href="http://theory.stanford.edu/~amitp/GameProgramming/" target="_blank" rel="external">http://theory.stanford.edu/~amitp/GameProgramming/</a></p>
 <h5 id="后续将会讨论一些A-算法优化问题。"><a href="#后续将会讨论一些A-算法优化问题。" class="headerlink" title="后续将会讨论一些A*算法优化问题。"></a>后续将会讨论一些A*算法优化问题。</h5><p>转载请注明出处</p>
-</=></pre>
+
       
 
       
