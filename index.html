@@ -249,19 +249,19 @@ for i in range(0, len(self.links)):
 
 
   
-    <article id="post-文章题目" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-AStar算法入门浅谈" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/03/27/文章题目/">A*算法入门浅谈</a>
+      <a class="article-title" href="/2017/03/27/AStar算法入门浅谈/">A*算法入门浅谈</a>
     </h1>
   
 
         
-        <a href="/2017/03/27/文章题目/" class="archive-article-date">
+        <a href="/2017/03/27/AStar算法入门浅谈/" class="archive-article-date">
   	<time datetime="2017-03-27T07:31:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
 </a>
         
@@ -269,14 +269,11 @@ for i in range(0, len(self.links)):
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#A*算法浅析</p>
-<blockquote>
+        <h1 id="A-算法浅析"><a href="#A-算法浅析" class="headerlink" title="A*算法浅析"></a>A*算法浅析</h1><blockquote>
 <p>在玩游戏时，我们遇到过这样的场景：接到一个任务，需要前往某个坐标（例如npc，某个地区），此时我们点击任务列表中的坐标，我们的角色就会自动前往该目标，并且可以自动的规避一些障碍或者死胡同。那么这种AI路径规划技术就是A<em>算法。本文将会简单介绍A</em>算法的概念，并且给出一个最为简单的例子。</p>
 </blockquote>
-<p>###概述</p>
-<p>A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查某个状态的相邻状态来得到从起始状态到目标状态的最小代价路径。实质上就是反复检查它已经看到的但是还没有搜索到的最有希望的位置。而当目标位置被探索到时，算法终止。</p>
-<p>###原理</p>
-<p>通过维护两张表（OPEN，CLOSED）来标记地图上的未检查状态和已检查状态，对于某个结点，检查其相邻状态，然后选择最好的状态继续检查，直至检查到目标点。</p>
+<h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查某个状态的相邻状态来得到从起始状态到目标状态的最小代价路径。实质上就是反复检查它已经看到的但是还没有搜索到的最有希望的位置。而当目标位置被探索到时，算法终止。</p>
+<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>通过维护两张表（OPEN，CLOSED）来标记地图上的未检查状态和已检查状态，对于某个结点，检查其相邻状态，然后选择最好的状态继续检查，直至检查到目标点。</p>
 <p>从上面这段描述来看，有没有感觉有点熟悉？dijktra算法。确实，有点像，不过看完下面这张图，你就知道和dj算法哪里不同了。<br><img src="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true" alt=""></p>
 <ul>
 <li>A*算法维护着一个父状态以保证最终可以从终点通过父结点来回溯找到完整的路径；而dj算法只是求最短路径。</li>
@@ -285,8 +282,7 @@ for i in range(0, len(self.links)):
 </ul>
 <p>从原理描述，我们可以提一个问题：怎么选择最好的状态？仅仅是离目标点最近吗？显然不行。对于最简单的无障碍物来说，影响不大。而对于有障碍物的情况，那么这种启发式会仅仅考虑到达目标的代价，而忽略了当前已花费的代价，于是尽管路径变得很长，它仍然继续走下去。</p>
 <p>所以我们结合一下，共维护两种代价：一种是从开始状态到该状态的代价；另一种则是到达目标位置剩余距离的代价的一个启发式估价函数（例如离目标点最近）。而整个路径的估价值（前面两种代价相加）用以决定下一个要检查的状态即选择相邻状态中最好的那个。</p>
-<p>###实现</p>
-<p>目前A*的思路就很明显了。具体实现思路：closed表初始为空，open表只有初始状态。每次迭代，将open表中最好的状态（即Totalcost最小）取出检查。如不是目标状态，则检查它的相邻状态（如果是新状态，添加必要信息如父状态，CostFromStart，CostToGoal；如已经在open表中且代价更低，则更新该位置的信息如update新的父状态，代价等；如已经在closed表中，忽略）。</p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>目前A*的思路就很明显了。具体实现思路：closed表初始为空，open表只有初始状态。每次迭代，将open表中最好的状态（即Totalcost最小）取出检查。如不是目标状态，则检查它的相邻状态（如果是新状态，添加必要信息如父状态，CostFromStart，CostToGoal；如已经在open表中且代价更低，则更新该位置的信息如update新的父状态，代价等；如已经在closed表中，忽略）。</p>
 <p>伪代码形式如下：</p>
 <pre>
 
@@ -323,8 +319,7 @@ AStarSearch(Location StartLoc, Location EndLoc)
 <p>这里的open表我采用的是list，其实有一种更好的方法就是采用优先级队列。这种方式实现起来会更简单，而且效率也会较高。</p>
 <p>程序源代码: <a href="https://github.com/LZleejean" target="_blank" rel="external">https://github.com/LZleejean</a></p>
 <p>这里给大家推荐一个写的特别好的A*算法的文章。<a href="http://theory.stanford.edu/~amitp/GameProgramming/" target="_blank" rel="external">http://theory.stanford.edu/~amitp/GameProgramming/</a></p>
-<p>#####后续将会讨论一些A*算法优化问题。</p>
-<p>转载请注明出处</p>
+<h5 id="后续将会讨论一些A-算法优化问题。"><a href="#后续将会讨论一些A-算法优化问题。" class="headerlink" title="后续将会讨论一些A*算法优化问题。"></a>后续将会讨论一些A*算法优化问题。</h5><p>转载请注明出处</p>
 </=></pre>
       
 
@@ -348,7 +343,7 @@ AStarSearch(Location StartLoc, Location EndLoc)
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/03/27/文章题目/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/03/27/AStar算法入门浅谈/">展开全文 >></a>
         </p>
       
 
