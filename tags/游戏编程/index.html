@@ -6,36 +6,17 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lzzhenli.com">
-  <title>A*算法入门浅谈 | 箴理</title>
+  <title>Tag: 游戏编程 | 箴理</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#A*算法浅析
-
-在玩游戏时，我们遇到过这样的场景：接到一个任务，需要前往某个坐标（例如npc，某个地区），此时我们点击任务列表中的坐标，我们的角色就会自动前往该目标，并且可以自动的规避一些障碍或者死胡同。那么这种AI路径规划技术就是A算法。本文将会简单介绍A算法的概念，并且给出一个最为简单的例子。
-
-###概述
-A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索">
-<meta property="og:type" content="article">
-<meta property="og:title" content="A*算法入门浅谈">
-<meta property="og:url" content="http://lzzhenli.com/2017/03/27/文章题目/index.html">
+  <meta name="description" content="这是我的心得集">
+<meta property="og:type" content="website">
+<meta property="og:title" content="箴理">
+<meta property="og:url" content="http://lzzhenli.com/tags/游戏编程/index.html">
 <meta property="og:site_name" content="箴理">
-<meta property="og:description" content="#A*算法浅析
-
-在玩游戏时，我们遇到过这样的场景：接到一个任务，需要前往某个坐标（例如npc，某个地区），此时我们点击任务列表中的坐标，我们的角色就会自动前往该目标，并且可以自动的规避一些障碍或者死胡同。那么这种AI路径规划技术就是A算法。本文将会简单介绍A算法的概念，并且给出一个最为简单的例子。
-
-###概述
-A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索">
-<meta property="og:image" content="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true">
-<meta property="og:image" content="http://wx3.sinaimg.cn/mw690/3d885b55ly1fesevt8b3wj20e70acmxs.jpg">
-<meta property="og:updated_time" content="2017-04-19T16:17:09.650Z">
+<meta property="og:description" content="这是我的心得集">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="A*算法入门浅谈">
-<meta name="twitter:description" content="#A*算法浅析
-
-在玩游戏时，我们遇到过这样的场景：接到一个任务，需要前往某个坐标（例如npc，某个地区），此时我们点击任务列表中的坐标，我们的角色就会自动前往该目标，并且可以自动的规避一些障碍或者死胡同。那么这种AI路径规划技术就是A算法。本文将会简单介绍A算法的概念，并且给出一个最为简单的例子。
-
-###概述
-A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索">
-<meta name="twitter:image" content="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true">
+<meta name="twitter:title" content="箴理">
+<meta name="twitter:description" content="这是我的心得集">
   
     <link rel="alternative" href="/atom.xml" title="箴理" type="application/atom+xml">
   
@@ -175,121 +156,36 @@ A*算法的原理呢，比较简单，这里我们就简单说明下。这个算
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-文章题目" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      A*算法入门浅谈
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/27/文章题目/" class="archive-article-date">
+  	<time datetime="2017-03-27T07:31:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/27/文章题目/">A*算法入门浅谈</a>
     </h1>
   
 
-        
-        <a href="/2017/03/27/文章题目/" class="archive-article-date">
-  	<time datetime="2017-03-27T07:31:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#A*算法浅析</p>
-<blockquote>
-<p>在玩游戏时，我们遇到过这样的场景：接到一个任务，需要前往某个坐标（例如npc，某个地区），此时我们点击任务列表中的坐标，我们的角色就会自动前往该目标，并且可以自动的规避一些障碍或者死胡同。那么这种AI路径规划技术就是A<em>算法。本文将会简单介绍A</em>算法的概念，并且给出一个最为简单的例子。</p>
-</blockquote>
-<p>###概述</p>
-<p>A*算法的原理呢，比较简单，这里我们就简单说明下。这个算法呢，是在状态空间上进行搜索的，通过检查某个状态的相邻状态来得到从起始状态到目标状态的最小代价路径。实质上就是反复检查它已经看到的但是还没有搜索到的最有希望的位置。而当目标位置被探索到时，算法终止。</p>
-<p>###原理</p>
-<p>通过维护两张表（OPEN，CLOSED）来标记地图上的未检查状态和已检查状态，对于某个结点，检查其相邻状态，然后选择最好的状态继续检查，直至检查到目标点。</p>
-<p>从上面这段描述来看，有没有感觉有点熟悉？dijktra算法。确实，有点像，不过看完下面这张图，你就知道和dj算法哪里不同了。<br><img src="https://github.com/LZleejean/LZleejean.github.io/blob/master/img/A-Star.gif?raw=true" alt=""></p>
-<ul>
-<li>A*算法维护着一个父状态以保证最终可以从终点通过父结点来回溯找到完整的路径；而dj算法只是求最短路径。</li>
-<li>A*算法使用场景比较广泛，可以直接运用至游戏世界中；而dj算法是相对抽象的图场景。</li>
-<li>还有一点这个图中体现的不明显。A*算法是启发式搜索，即尽可能朝着目标方向搜索；而dj算法在这种场景下则是一层层向外扩展。</li>
-</ul>
-<p>从原理描述，我们可以提一个问题：怎么选择最好的状态？仅仅是离目标点最近吗？显然不行。对于最简单的无障碍物来说，影响不大。而对于有障碍物的情况，那么这种启发式会仅仅考虑到达目标的代价，而忽略了当前已花费的代价，于是尽管路径变得很长，它仍然继续走下去。</p>
-<p>所以我们结合一下，共维护两种代价：一种是从开始状态到该状态的代价；另一种则是到达目标位置剩余距离的代价的一个启发式估价函数（例如离目标点最近）。而整个路径的估价值（前面两种代价相加）用以决定下一个要检查的状态即选择相邻状态中最好的那个。</p>
-<p>###实现</p>
-<p>目前A*的思路就很明显了。具体实现思路：closed表初始为空，open表只有初始状态。每次迭代，将open表中最好的状态（即Totalcost最小）取出检查。如不是目标状态，则检查它的相邻状态（如果是新状态，添加必要信息如父状态，CostFromStart，CostToGoal；如已经在open表中且代价更低，则更新该位置的信息如update新的父状态，代价等；如已经在closed表中，忽略）。</p>
-<p>伪代码形式如下：</p>
-<pre>
-
-AStarSearch(Location StartLoc, Location EndLoc)
-{
-    //初始化起点
-    StartNode.Loc=StartLoc
-    StartNode.CostFromStart=0
-    StartNode.CostToGoal=PathCost(StartLoc, EndLoc)
-    StartNode.TotalCost=CostFromStart+CostToGoal
-    StartNode.parent=NULL
-    push StartNode on Open
-
-    while Open is not empty
-    {
-        //按totalcost排序，将最小代价节点取出
-        pop Node from Open
-
-        if (Node is Goal)
-        {
-            构造路径
-            return success
-        }
-        else
-        {
-            for each NewNode of Node
-            {
-                NewCost = Node.GetCostFromStart() + GetCost(Node,NewNode)
-                //已存在的就忽略
-                if (NewNode is in Closed or (NewNode is in Open and NewNode.CostFromStart <= newcost))="" {="" continue;="" }="" else="" 在open表中则只更新数据="" if="" (newnode="" is="" in="" open)="" newnode.parent="Node" newnode.costfromstart="NewCost" newnode.costtogoal="PathCost(NewNode.Loc," endloc)="" newnode.totalcost="NewNode.CostFromStart+NewNode.CostToGoal" push="" new="" node="" to="" open 相邻状态遍历完毕="" closed="" return="" failure="" <="" pre="">
-
-<p>我用c++实现了一个最简单的形式，地图为方形栅格，无障碍物，取与目标点的欧几里得距离为启发式估价函数。设相邻状态对角的cost为14，直线的cost为10。</p>
-<p>运行结果展示：<br>我假设的起始点为(5,5).终点为(15,10)<br><img src="http://wx3.sinaimg.cn/mw690/3d885b55ly1fesevt8b3wj20e70acmxs.jpg" alt=""></p>
-<p>这里的open表我采用的是list，其实有一种更好的方法就是采用优先级队列。这种方式实现起来会更简单，而且效率也会较高。</p>
-<p>程序源代码: <a href="https://github.com/LZleejean" target="_blank" rel="external">https://github.com/LZleejean</a></p>
-<p>这里给大家推荐一个写的特别好的A*算法的文章。<a href="http://theory.stanford.edu/~amitp/GameProgramming/" target="_blank" rel="external">http://theory.stanford.edu/~amitp/GameProgramming/</a></p>
-<p>#####后续将会讨论一些A*算法优化问题。</p>
-<p>转载请注明出处</p>
-</=></pre>
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://lzleejean.github.io/img/alpay.jpg">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="https://lzleejean.github.io/img/wechat.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -301,97 +197,19 @@ AStarSearch(Location StartLoc, Location EndLoc)
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://lzzhenli.com/2017/03/27/文章题目/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/04/17/人民网解析池分析/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          人民网解析池简单分析
-        
-      </div>
-    </a>
   
   
-    <a href="/2017/03/26/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Hello World</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-
-  
-    <div class="duoshuo"></div>
+    </div></section>
   
 
-
+    
 
 
           </div>
@@ -418,11 +236,11 @@ AStarSearch(Location StartLoc, Location EndLoc)
 
 		isHome: false,
 
-		isPost: true,
+		isPost: false,
 
 		isArchive: false,
 
-		isTag: false,
+		isTag: true,
 
 		isCategory: false,
 
