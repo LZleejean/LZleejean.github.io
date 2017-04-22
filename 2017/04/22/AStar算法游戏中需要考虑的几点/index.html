@@ -6,30 +6,36 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lzzhenli.com">
-  <title>箴理</title>
+  <title>A*算法游戏中需要考虑的几点 | 箴理</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="A*算法游戏中需要考虑的几点在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。
+  <meta name="description" content="在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。
 
 空间的划分：矩形栅格；四叉树；凸多边形；可见点；广义圆柱体
 
-相邻状态：取决于地图表示和量化方式。比如在正方形栅格中，量化方式是只选择相邻位置-取周围8个还是4个，还有量化方式是取周围一定量的点（跟定义的规则有关），还要考虑地形（障碍物或者陆军不能过海）">
+相邻状态：取决于地图表示和量化方式。比如在正方形栅格中，量化方式是只选择相邻位置-取周围8个还是4个，还有量化方式是取周围一定量的点（跟定义的规则有关），还要考虑地形（障碍物或者陆军不能过海）
+
+代价：可以是距离，时间，花">
 <meta property="og:type" content="article">
-<meta property="og:title" content="箴理">
+<meta property="og:title" content="A*算法游戏中需要考虑的几点">
 <meta property="og:url" content="http://lzzhenli.com/2017/04/22/AStar算法游戏中需要考虑的几点/index.html">
 <meta property="og:site_name" content="箴理">
-<meta property="og:description" content="A*算法游戏中需要考虑的几点在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。
+<meta property="og:description" content="在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。
 
 空间的划分：矩形栅格；四叉树；凸多边形；可见点；广义圆柱体
 
-相邻状态：取决于地图表示和量化方式。比如在正方形栅格中，量化方式是只选择相邻位置-取周围8个还是4个，还有量化方式是取周围一定量的点（跟定义的规则有关），还要考虑地形（障碍物或者陆军不能过海）">
-<meta property="og:updated_time" content="2017-04-22T15:21:35.683Z">
+相邻状态：取决于地图表示和量化方式。比如在正方形栅格中，量化方式是只选择相邻位置-取周围8个还是4个，还有量化方式是取周围一定量的点（跟定义的规则有关），还要考虑地形（障碍物或者陆军不能过海）
+
+代价：可以是距离，时间，花">
+<meta property="og:updated_time" content="2017-04-22T16:24:44.427Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="箴理">
-<meta name="twitter:description" content="A*算法游戏中需要考虑的几点在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。
+<meta name="twitter:title" content="A*算法游戏中需要考虑的几点">
+<meta name="twitter:description" content="在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。
 
 空间的划分：矩形栅格；四叉树；凸多边形；可见点；广义圆柱体
 
-相邻状态：取决于地图表示和量化方式。比如在正方形栅格中，量化方式是只选择相邻位置-取周围8个还是4个，还有量化方式是取周围一定量的点（跟定义的规则有关），还要考虑地形（障碍物或者陆军不能过海）">
+相邻状态：取决于地图表示和量化方式。比如在正方形栅格中，量化方式是只选择相邻位置-取周围8个还是4个，还有量化方式是取周围一定量的点（跟定义的规则有关），还要考虑地形（障碍物或者陆军不能过海）
+
+代价：可以是距离，时间，花">
   
     <link rel="alternative" href="/atom.xml" title="箴理" type="application/atom+xml">
   
@@ -172,9 +178,24 @@
             <article id="post-AStar算法游戏中需要考虑的几点" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      A*算法游戏中需要考虑的几点
+    </h1>
+  
+
+        
+        <a href="/2017/04/22/AStar算法游戏中需要考虑的几点/" class="archive-article-date">
+  	<time datetime="2017-04-22T14:33:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-22</time>
+</a>
+        
+      </header>
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="A-算法游戏中需要考虑的几点"><a href="#A-算法游戏中需要考虑的几点" class="headerlink" title="A*算法游戏中需要考虑的几点"></a>A*算法游戏中需要考虑的几点</h1><p>在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。</p>
+        <p>在实际游戏开发过程中采用A*算法，考虑清楚以下几点并采取适当的策略，那么必然可以得到一种高效美观合适的优化算法。</p>
 <ul>
 <li><p>空间的划分：<br>矩形栅格；四叉树；凸多边形；可见点；广义圆柱体</p>
 </li>
@@ -227,6 +248,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
