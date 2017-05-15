@@ -6,17 +6,29 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://lzzhenli.com">
-  <title>Archives: 2017/3 | 箴理</title>
+  <title>Cocos2d-x基础知识 | 箴理</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="这是我的心得集">
-<meta property="og:type" content="website">
-<meta property="og:title" content="箴理">
-<meta property="og:url" content="http://lzzhenli.com/archives/2017/03/index.html">
+  <meta name="description" content="Cocos2d-x基础知识
+近来要开始一项之前想了很久的计划，那么玩转cocos2d则是这个计划中的第一步，并且在接下来的一系列文章中会记录自己的学习过程，也算是一种监督吧。本文先来说一下自己对cocos2dx一些基本概念的理解，至于一些高级特性，以后边学边更新。
+
+一 游戏框架在coco2dx引擎中，采用树的结构来管理游戏对象。对于一个游戏来说（或者说你的一个工程），那么有且仅有一个导演Dire">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cocos2d-x基础知识">
+<meta property="og:url" content="http://lzzhenli.com/2017/04/29/Cocos2d-x基础知识/index.html">
 <meta property="og:site_name" content="箴理">
-<meta property="og:description" content="这是我的心得集">
+<meta property="og:description" content="Cocos2d-x基础知识
+近来要开始一项之前想了很久的计划，那么玩转cocos2d则是这个计划中的第一步，并且在接下来的一系列文章中会记录自己的学习过程，也算是一种监督吧。本文先来说一下自己对cocos2dx一些基本概念的理解，至于一些高级特性，以后边学边更新。
+
+一 游戏框架在coco2dx引擎中，采用树的结构来管理游戏对象。对于一个游戏来说（或者说你的一个工程），那么有且仅有一个导演Dire">
+<meta property="og:image" content="http://www.processon.com/chart_image/59045b06e4b09c40adea952e.png">
+<meta property="og:updated_time" content="2017-04-29T10:00:47.240Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="箴理">
-<meta name="twitter:description" content="这是我的心得集">
+<meta name="twitter:title" content="Cocos2d-x基础知识">
+<meta name="twitter:description" content="Cocos2d-x基础知识
+近来要开始一项之前想了很久的计划，那么玩转cocos2d则是这个计划中的第一步，并且在接下来的一系列文章中会记录自己的学习过程，也算是一种监督吧。本文先来说一下自己对cocos2dx一些基本概念的理解，至于一些高级特性，以后边学边更新。
+
+一 游戏框架在coco2dx引擎中，采用树的结构来管理游戏对象。对于一个游戏来说（或者说你的一个工程），那么有且仅有一个导演Dire">
+<meta name="twitter:image" content="http://www.processon.com/chart_image/59045b06e4b09c40adea952e.png">
   
     <link rel="alternative" href="/atom.xml" title="箴理" type="application/atom+xml">
   
@@ -156,87 +168,189 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Cocos2d-x基础知识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/27/AStar算法入门浅谈/" class="archive-article-date">
-  	<time datetime="2017-03-27T07:31:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-27</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/27/AStar算法入门浅谈/">A*算法入门浅谈</a>
+    <h1 class="article-title" itemprop="name">
+      Cocos2d-x基础知识
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/04/29/Cocos2d-x基础知识/" class="archive-article-date">
+  	<time datetime="2017-04-29T09:09:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Cocos2d-x基础知识"><a href="#Cocos2d-x基础知识" class="headerlink" title="Cocos2d-x基础知识"></a>Cocos2d-x基础知识</h1><blockquote>
+<p>近来要开始一项之前想了很久的计划，那么玩转cocos2d则是这个计划中的第一步，并且在接下来的一系列文章中会记录自己的学习过程，也算是一种监督吧。本文先来说一下自己对cocos2dx一些基本概念的理解，至于一些高级特性，以后边学边更新。</p>
+</blockquote>
+<h2 id="一-游戏框架"><a href="#一-游戏框架" class="headerlink" title="一 游戏框架"></a>一 游戏框架</h2><p>在coco2dx引擎中，采用树的结构来管理游戏对象。对于一个游戏来说（或者说你的一个工程），那么有且仅有一个导演Director来管理整个游戏的流程，比如场景的切换等等。它管理着多个场景Scene，而一个场景又分为不同的层Layer，每个层又有N个精灵Sprite。大致结构如下：<br><img src="http://www.processon.com/chart_image/59045b06e4b09c40adea952e.png" alt=""></p>
+<h4 id="导演"><a href="#导演" class="headerlink" title="导演"></a>导演</h4><p>在cocos2dx中把统筹游戏大局的类抽象为导演（Director），它是整个游戏引擎的核心，掌控着整个游戏的运作。比如场景的切换，游戏暂停开始，节点控制。因为导演只有一个，所以很自然的想到用单例模式来设计Director类。</p>
+<h4 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h4><p>这个场景就相当于电影中的场景，比如一部电影可能需要很多个场地，不容的场景，而游戏也一样需要构建不同的场景。那么就像游戏的关卡，模块的切换就是一个个场景的切换。<br>它的重要应用就是配合导演实现流程控制。</p>
+<h4 id="层"><a href="#层" class="headerlink" title="层"></a>层</h4><p>层主要用来处理玩家响应，与抽象的场景不同，层包含的是直接在屏幕上显示的内容，通常我们需要在层中添加精灵或者其他游戏元素。主要用法就是在层中添加要素，并且编写对应的逻辑代码，组织好之后，把层按设计的顺序添加到场景中即可，使用addChild（）方法，在层中添加精灵也累死。<br>注意，Node类是几乎所有类的父类。</p>
+<h4 id="精灵"><a href="#精灵" class="headerlink" title="精灵"></a>精灵</h4><p>其实就是一个图片对象，比如游戏中的英雄，怪物，石头等等等等。精灵呢有动作（移动，旋转，动画神马的），主要由Texure，frame和animation组成，简单过程可描述为：使用Texture2D加载图片，可以用Texture2D生成对应的SpriteFrame（精灵帧），将SpriteFrame添加到Animation生成动画数据，用Animation生成Animate（就是最终的动画动作），最后用Sprite执行这个动作。</p>
+<h4 id="调度器"><a href="#调度器" class="headerlink" title="调度器"></a>调度器</h4><p>为游戏提供定时事件和定时调用服务。cocos2d呢总共提供了三种方式的调度器：默认；自定义的；单次的。默认的需要重载update函数来实现。而自定义和单次的则需要自己实现一个函数，通过schedule或scheduleOnce函数传入函数指针来做的。</p>
+<h2 id="二-渲染和动画"><a href="#二-渲染和动画" class="headerlink" title="二 渲染和动画"></a>二 渲染和动画</h2><h4 id="坐标系"><a href="#坐标系" class="headerlink" title="坐标系"></a>坐标系</h4><p>标准屏幕坐标系：原点屏幕左上角，x向右，y向下。<br>OpenGL或 Cocos2d坐标系：原点为屏幕左下角，x向右，y向上。<br>游戏开发中常用到两种坐标系：世界坐标系，本地坐标系。世界坐标系就是针对于你的游戏世界的坐标，是绝对坐标。而本地的，因为cocos2d中元素是通过节点层级结构组织，所以本地坐标系指的是相对于父节点的坐标。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://lzleejean.github.io/img/alpay.jpg">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="https://lzleejean.github.io/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">游戏编程</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">cocos2d</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://lzzhenli.com/2017/04/29/Cocos2d-x基础知识/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/26/hello-world/" class="archive-article-date">
-  	<time datetime="2017-03-26T15:33:19.347Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-26</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/26/hello-world/">Hello World</a>
-    </h1>
+    <a href="/2017/05/15/单例模式浅谈/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          单例模式浅谈
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/22/AStar算法游戏中需要考虑的几点/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">A*算法游戏中需要考虑的几点</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "899c7e7c342e4395b4543e102d789414",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
   
 
-    
+  
 
 
           </div>
@@ -259,8 +373,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
